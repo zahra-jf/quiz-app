@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz app</title>
+
+    <link rel="stylesheet" href="./dist/Bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="./dist/Bootstrap/bootstrap-icons.min.css" />
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container h-100 m-auto">
+      <div class="signup-section w-75 m-5 m-auto mt-5 h-50" id="signup-section">
+        <div class="left-section-signup col-8">
+          <h2 class="mb-4">sign up</h2>
+          <form action="#" id="signup-form">
+            <input
+              class="form-control mb-3 w-50"
+              type="text"
+              placeholder="name"
+              required
+            />
+            <input
+              class="form-control mb-3 w-50"
+              type="email"
+              placeholder="email"
+              required
+            />
+            <input
+              class="form-control mb-3 w-50"
+              type="password"
+              placeholder="password"
+              required
+            />
+            <button
+              class="mt-4 btn btn-outline-secondary btn-signup-submit"
+              type="submit"
+            >
+              sign up
+            </button>
+          </form>
+        </div>
+
+        <div class="right-section-signup col-4">
+          <div class="intro">
+            <h2 class="mb-5">welcome</h2>
+            <p class="mb-5">
+              This is a Quiz<br />
+              appThis is a Quiz appThis is a Quiz<br />
+              appThis is a Quiz appThis is a Quiz app
+            </p>
+          </div>
+          <button class="btn btn-light btn-login">login</button>
+        </div>
+      </div>
+
+      <div class="login-section w-75 m-5 m-auto mt-5 h-50" id="login-section">
+        <div class="left-section-login col-8">
+          <h2 class="mb-4">log in</h2>
+          <form action="#" class="p-3">
+            <input
+              class="form-control mb-3 w-50"
+              type="email"
+              placeholder="email"
+              required
+            />
+            <input
+              class="form-control mb-3 w-50"
+              type="password"
+              placeholder="password"
+              required
+            />
+          </form>
+          <button class="mt-4 btn btn-secondary btn-login-submit mt-3">
+            log in
+          </button>
+        </div>
+
+        <div class="right-section-login col-4">
+          <div class="intro">
+            <h2 class="mb-5">welcome back</h2>
+            <p class="mb-5">
+              This is a Quiz<br />
+              appThis is a Quiz appThis is a Quiz<br />
+              appThis is a Quiz app
+            </p>
+          </div>
+          <button class="btn btn-outline-secondary btn-signup">sign up</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
