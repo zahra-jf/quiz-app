@@ -1,9 +1,11 @@
 :root {
-    --clr-bg: #2B3A55;
-    --clr-light: #F2E5E5;
-    --clr-dark: #F85F73;
+:root {
+        --clr-bg: #bbc7e0;
+        --clr-light: #EDE8F5;
+        --clr-dark: #3D52A0;
 
-    --clr-mid: #E8C4C4;
+        --clr-mid: #7091e6;
+    }
 }
 
  /* --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -15,9 +17,9 @@
 } */
 
 .cont{
-    gap: 2rem;
+    gap: 3rem;
     flex-wrap: wrap;  
-    margin: 1rem;
+    margin: 1.5rem;
     margin-top: 0;
     padding: 1rem;
     padding-top: 6rem;
@@ -34,7 +36,7 @@
 nav{ 
    justify-content: space-between;
    align-items: center;
-   background-color: var(--clr-mid);
+   background-color: #3D52A0;
    margin-bottom: 1.5rem;
    padding: 0.5rem 1rem;
     position: fixed;
@@ -81,9 +83,10 @@ img {
 
 .flipCard {
     perspective: 1000px ;
-    height: 400px;
+    height: 370px;
     background-color: transparent ;
     border: none;
+    
 }
 
 .content {
@@ -91,8 +94,9 @@ img {
     width: 100% ;
     height: 100% ;
     text-align: center ;
-    transition: transform 1s ;
+    transition: transform 0.9s ;
     transform-style: preserve-3d ;
+    
 }
 
 .flipCard:hover .content {
@@ -113,7 +117,7 @@ img {
 }
 
 .back {
-    background-color:pink ;
+    background-color:#f0f3fb;
     transform: rotateY(180deg) ;
     z-index: 1;
     display: flex;
@@ -134,6 +138,37 @@ img {
     font-size: 1.3rem;
 }
 
+.log-Out,
+.home,
+.about{
+    color: #bbc7e0;
+}
+
+.logo{
+    color:var(--clr-light);
+}
+
 .log-Out ,.home,.about:hover{
-    cursor: pointer;
+    cursor: pointer; 
+   
+}
+
+
+.log-Out:hover{color: var(--clr-light); }
+.home:hover{color: var(--clr-light);}
+.about:hover{color: var(--clr-light);}
+
+.card{
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+}
+
+.btn {
+    background-color: #3D52A0 !important;
+border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.btn:hover {
+    background-color: #596eba !important;
 }
