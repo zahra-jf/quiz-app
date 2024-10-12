@@ -15,25 +15,39 @@
       <div class="signup-section w-75 m-5 m-auto mt-5 h-50" id="signup-section">
         <div class="left-section-signup col-8">
           <h2 class="mb-4">sign up</h2>
-          <form action="#" id="signup-form">
+          <form  id="signup-form">
             <input
-              class="form-control mb-3 w-50"
+            id="signup-name"
+              class="form-control mb-3 w-50 "
               type="text"
               placeholder="name"
-              required
+         
             />
+            <span id="name-valid">Enter your name</span>
             <input
+            id="signup-email"
               class="form-control mb-3 w-50"
               type="email"
               placeholder="email"
-              required
             />
+            <span id="email-valid">Enter a valid email</span>
+            
             <input
+            id="signup-pass"
               class="form-control mb-3 w-50"
               type="password"
               placeholder="password"
               required
             />
+            <span id="pass-valid" >The minimum number of characters must be six</span>
+            <input
+            id="signup-confirm-pass"
+              class="form-control mb-3 w-50"
+              type="password"
+              placeholder="password confirm"
+             
+            />
+             <span id="confirm-pass-valid" >The password fields do not match</span>
             <button
               class="mt-4 btn btn-outline-secondary btn-signup-submit"
               type="submit"
@@ -59,19 +73,23 @@
       <div class="login-section w-75 m-5 m-auto mt-5 h-50" id="login-section">
         <div class="left-section-login col-8">
           <h2 class="mb-4">log in</h2>
-          <form action="#" class="p-3">
+          <form  class="p-3" id="login-form">
             <input
+            id="login-email"
               class="form-control mb-3 w-50"
               type="email"
               placeholder="email"
-              required
             />
+             <span id="email-valid-login">Enter a valid email</span>
             <input
+            id="login-pass"
               class="form-control mb-3 w-50"
               type="password"
               placeholder="password"
-              required
+             
             />
+            <span id="pass-valid-login" >Enter correct password</span>
+      
           </form>
           <button class="mt-4 btn btn-secondary btn-login-submit mt-3">
             log in
@@ -93,5 +111,6 @@
     </div>
 
     <script src="./js/app.js"></script>
+    <script src="./js/select.js"></script>
   </body>
 </html>

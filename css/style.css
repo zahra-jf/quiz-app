@@ -228,3 +228,11 @@ background-color: var(--clr-mid);
                 border-bottom-right-radius: 0px;
            }
 }
+
+
+#pass-valid , #confirm-pass-valid , #name-valid , #email-valid , #email-valid-login , #pass-valid-login{
+    display:none;
+    padding:0;
+    margin-bottom:0.5rem;
+    color: rgb(253, 72, 72);
+}
