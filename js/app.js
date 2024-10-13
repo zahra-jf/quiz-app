@@ -23,13 +23,8 @@ let btnLoginSubmit = $.querySelector("btn-login-submit");
 window.addEventListener("load", () => {
   let isLogin = getCookie("accessToken");
   if (isLogin) {
-    console.log("token" );
-    
     location.href = "../htmls/select.html";
   } else {
-    // location.href = "../index.html";
-    console.log("havent token");
-    
     loginSection.style.display = "none";
     signupSection.style.display = "flex";
   }
@@ -181,7 +176,7 @@ loginForm.addEventListener("submit", (e) => {
     });
 });
 
-//   گرفتن کوکی با نام خاص
+
 function getCookie(name) {
   const nameEQ = name + "=";
   const ca = document.cookie.split(";");
@@ -215,3 +210,6 @@ function getCookie(name) {
     window.location.href = "../index.html";
   }
 }
+
+
+// export { getCookie };

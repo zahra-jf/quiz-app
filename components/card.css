@@ -1,0 +1,147 @@
+:root {
+    --clr-bg: #bbc7e0;
+    --clr-light: #EDE8F5;
+    --clr-dark: #3D52A0;
+
+    --clr-mid: #7091e6;
+}
+
+.card{
+    width: 100%;
+}
+
+
+.cont {
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin: 1.5rem;
+    margin-top: 0;
+    padding: 1rem;
+    padding-top: 6rem;
+
+}
+
+
+img {
+    height: 60%;
+}
+
+
+
+.flipCard {
+    perspective: 1000px;
+    height: 370px;
+    background-color: transparent;
+    border: none;
+    /* border: solid 1px #8699dc; */
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.9s;
+    transform-style: preserve-3d;
+
+}
+
+.flipCard:hover .content {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.front {
+    z-index: 2;
+
+}
+
+.back {
+    background-color: #f0f3fb;
+    transform: rotateY(180deg);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.icon-text {
+    font-size: 1.3rem;
+}
+
+.card {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.btn {
+    background-color: #3D52A0 !important;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border: #7091e6 solid 1px;
+}
+
+.btn:hover {
+    background-color: #596eba !important;
+}
+
+
+.card-title {
+    color: #3D52A0;
+    font-size: 2rem;
+    padding: 1.2rem;
+}
+
+
+.bi {
+    margin: 0.3rem;
+    font-size: 1.5rem;
+    color: #7091e6;
+}
+
+.bi:hover {
+    cursor: pointer;
+    color: #d4def2;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    background-color: var(--clr-dark);
+    border-top: #3D52A0 0.5px solid;
+    padding: 0.4rem 0.5rem;
+}
+
+.icon-text {
+    margin-right: 0.3rem;
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+
+@media screen and (max-width: 991px) {
+    .card {
+        width: 100%;
+       
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .card {
+          margin-bottom: 0.5rem;
+        }
+}
