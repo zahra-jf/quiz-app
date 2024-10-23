@@ -76,6 +76,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+background-color: #ffffff;
 }
 
 .icon-text {
@@ -92,6 +93,7 @@ img {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border: #7091e6 solid 1px;
+    width: 100%;
 }
 
 .btn:hover {
@@ -127,9 +129,13 @@ img {
 
 .icon-text {
     margin-right: 0.3rem;
-    color: white;
+    color: var(--clr-light);
     text-align: center;
     font-size: 1.2rem;
+}
+
+.dynamic-icons{
+    display: flex;
 }
 
 
@@ -145,3 +151,4 @@ img {
           margin-bottom: 0.5rem;
         }
 }
+
