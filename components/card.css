@@ -152,3 +152,11 @@ background-color: #ffffff;
         }
 }
 
+.icon.selected {
+    border: 2px solid blue;
+    background-color: blue;
+    
+        /* رنگ آیکون انتخاب شده */
+        font-weight: bold;
+}
+

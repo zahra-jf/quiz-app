@@ -35,14 +35,16 @@ class Card extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.selectedDifficulty = null;
 
-    // const startButton = this.shadowRoot.querySelector(".btn");
-    // startButton.addEventListener("click", () => {
-    //   this.startExam();
-    // });
+    this.selectDifficulty = null;
+
+  
   }
-}
+  }
+
+
+
+
 
 // connectedCallback() {
 //   const skillName = this.getAttribute("data-skill");

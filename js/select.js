@@ -4,7 +4,7 @@ if (!customElements.get("skill-card")) {
   window.customElements.define("skill-card", Card);
 }
 
-
+let selectedSkillId = null;
 
 function getCookie(name) {
   const nameEQ = name + "=";
@@ -54,9 +54,24 @@ function displaySkills(skillsGrouped) {
       const iconsContainer = card.shadowRoot.querySelector(".dynamic-icons");
       iconsContainer.insertAdjacentHTML(
         "beforeend",
-        `<i class="bi bi-${item.difficulty}-circle-fill icon"></i>`
+        `<i class="bi bi-${item.difficulty}-circle-fill icon" id=${item.id} ></i>`
       );
     });
+
+
+     const icons = card.shadowRoot.querySelectorAll(".icon");
+     icons.forEach((icon) => {
+       icon.addEventListener("click", (event) => {
+         icons.forEach((i) => i.classList.remove("selected"));
+
+        const clickedIcon = event.target;
+        clickedIcon.classList.add("selected");
+         selectedSkillId = icon.id;
+         console.log(selectedSkillId);
+       });
+     });
+
+
     
     const skillContent = skills
       .map((skill) => {
@@ -73,8 +88,15 @@ function displaySkills(skillsGrouped) {
     card.shadowRoot.querySelector(".card-body-back").innerHTML = skillContent;
     skillsContainer.appendChild(card);
 
-    // const icon = card.shadowRoot.querySelector(".icon");
-    // console.log(icon);
+  card.shadowRoot
+    .querySelector(".btn-primary")
+    .addEventListener("click", () => {
+      if (selectedSkillId) {
+        window.location.href = `../htmls/question.html?skillId=${selectedSkillId}`;
+      } else {
+        alert("Please select one of the difficulty levels");
+      }
+    });
   }
 }
 
@@ -92,9 +114,3 @@ function getDifficultyLabel(difficulty) {
   }
 }
 
-
-
-
-
-
- 
