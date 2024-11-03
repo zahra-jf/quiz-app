@@ -32,7 +32,7 @@ body {
     margin-bottom: 3rem;
 }
 
-.Remaining-q,
+.remaining-q,
 .time-left {
     color: #6584d1;
     text-shadow: 1px 1px 1px var(--clr-mid);
@@ -48,7 +48,7 @@ body {
 
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.2rem;
 }
 
 

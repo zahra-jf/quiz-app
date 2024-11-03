@@ -1,11 +1,15 @@
-function getSkillIdFromURL() {
-    const params = new URLSearchParams(window.location.search);
-      console.log(params.get("skillId"));
-    return params.get("skillId");
+function getSkillIdAndDurationFromURL() {
+  const params = new URLSearchParams(window.location.search);
+
+  return {
+    skillId: params.get("skillId"),
+    duration: parseInt(params.get("duration"), 10) * 60,
+  };
 }
 
-const skillId = getSkillIdFromURL();
 
+const { skillId, duration } = getSkillIdAndDurationFromURL();
+let timeLeft = duration;
 
 function getCookie(name) {
   const nameEQ = name + "=";
@@ -25,16 +29,18 @@ let questions = [];
 
 function displayQuestion(index) {
   const questionTextElement = document.getElementById("q-text");
-  // const optionsContainer = document.getElementById("options-container");
+  const optionsContainer = document.getElementById("options-container");
   const question = questions[index];
   questionTextElement.textContent = question.title;
-  // optionsContainer.innerHTML = "";
-  // question.options.forEach((option) => {
-  //   const optionElement = document.createElement("div");
-  //   optionElement.classList.add("option");
-  //   optionElement.textContent = option.text;
-  //   optionsContainer.appendChild(optionElement);
-  // });
+  optionsContainer.innerHTML = "";
+     let i = 0;
+  question.options.forEach((option) => {
+    i++
+    const optionElement = document.createElement("div");
+    optionElement.classList.add("option");
+    optionElement.textContent =i+"- "+ option.text;
+    optionsContainer.appendChild(optionElement);
+  });
 }
 
 if ((skillId && accessToken)) {
@@ -51,7 +57,7 @@ if ((skillId && accessToken)) {
          .then((res) => res.json())
          .then((response) => {
            questions = response.data.questions;
-           console.log(questions);
+          
            
            displayQuestion(currentQuestionIndex); 
          })
@@ -60,72 +66,76 @@ if ((skillId && accessToken)) {
          });
 }
 
-
+let remainingQ = document.getElementById("remaining-q");
+let r=1
+ remainingQ.innerHTML=r+"/10"
+ 
+  
 document.getElementById("prev-btn").addEventListener("click", () => {
   if (currentQuestionIndex < questions.length - 1) {
     currentQuestionIndex++;
     displayQuestion(currentQuestionIndex);
+     r++;
+     remainingQ.innerHTML = r + "/10";
   }
+  
 });
 
 document.getElementById("next-btn").addEventListener("click", () => {
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
     displayQuestion(currentQuestionIndex);
+     r--;
+     remainingQ.innerHTML = r + "/10";
   }
 });
 
 
 
+if (skillId && accessToken) {
+  fetch(`http://127.0.0.1:8000/api/v1/skills/questions?skill_id=${skillId}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((response) => {
+      questions = response.data.questions;
+    
+
+      displayQuestion(currentQuestionIndex);
+    })
+    .catch((error) => {
+      console.error("Error fetching questions:", error);
+    });
+}
+
+
+function startCountdown() {
+  const timerElement = document.getElementById("timer");
+
+  const interval = setInterval(() => {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerElement.textContent = `${minutes}:${
+      seconds < 10 ? "0" : ""
+    }${seconds}`;
+
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      alert("زمان شما به پایان رسید!");
+      // می‌توانید کارهای دیگری مثل پایان آزمون یا ارسال خودکار پاسخ‌ها را هم اینجا انجام دهید.
+    }
+    timeLeft--;
+  }, 1000);
+}
+
+startCountdown();
 
 
 
 
 
-// let currentQuestionIndex = 0;
-// let questions = [];
 
-// function displayQuestion(index) {
-//   const questionTextElement = document.getElementById("q-text");
-//   const optionsContainer = document.getElementById("options-container");
-
-//   const question = questions[index];
-//   questionTextElement.textContent = question.title;
-
-//   optionsContainer.innerHTML = ""; // پاک کردن گزینه‌های قبلی
-//   question.options.forEach((option) => {
-//     const optionElement = document.createElement("div");
-//     optionElement.classList.add("option");
-//     optionElement.textContent = option.text;
-//     optionsContainer.appendChild(optionElement);
-//   });
-// }
-
-// fetch(`http://127.0.0.1:8000/api/v1/skills/questions?skill_id=${skillId}`, {
-//   method: "GET",
-//   headers: {
-//     Authorization: `Bearer ${accessToken}`,
-//     "Content-Type": "application/json",
-//   },
-// })
-//   .then((res) => res.json())
-//   .then((response) => {
-//     questions = response.data.questions;
-//     displayQuestion(currentQuestionIndex); // نمایش سوال اول
-//   })
-//   .catch((error) => console.error("Error fetching questions:", error));
-
-// // مدیریت کلیک بر روی دکمه‌های قبلی و بعدی
-// document.getElementById("next-btn").addEventListener("click", () => {
-//   if (currentQuestionIndex < questions.length - 1) {
-//     currentQuestionIndex++;
-//     displayQuestion(currentQuestionIndex);
-//   }
-// });
-
-// document.getElementById("prev-btn").addEventListener("click", () => {
-//   if (currentQuestionIndex > 0) {
-//     currentQuestionIndex--;
-//     displayQuestion(currentQuestionIndex);
-//   }
-// });

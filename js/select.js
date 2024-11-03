@@ -5,6 +5,7 @@ if (!customElements.get("skill-card")) {
 }
 
 let selectedSkillId = null;
+let durationMinutes=null
 
 function getCookie(name) {
   const nameEQ = name + "=";
@@ -44,35 +45,43 @@ if (accessToken) {
 function displaySkills(skillsGrouped) {
   for (const tag in skillsGrouped) {
     const skills = skillsGrouped[tag];
+    // console.log(skills);
+
     const card = document.createElement("skill-card");
     const skillsContainer = document.getElementById("skills-container");
-   
+
     card.shadowRoot.querySelector(".card-title").textContent =
       tag.toUpperCase();
-    
+
     skills.forEach((item) => {
+      
+      // let durationMinutes = item.duration;
+      // console.log(durationMinutes);
+
       const iconsContainer = card.shadowRoot.querySelector(".dynamic-icons");
       iconsContainer.insertAdjacentHTML(
         "beforeend",
-        `<i class="bi bi-${item.difficulty}-circle-fill icon" id=${item.id} ></i>`
+        `<i class="bi bi-${item.difficulty}-circle-fill icon" id=${item.id} data-duration=${item.duration} ></i>`
       );
     });
 
-
-     const icons = card.shadowRoot.querySelectorAll(".icon");
-     icons.forEach((icon) => {
-       icon.addEventListener("click", (event) => {
-         icons.forEach((i) => i.classList.remove("selected"));
+    const icons = card.shadowRoot.querySelectorAll(".icon");
+    icons.forEach((icon) => {
+      icon.addEventListener("click", (event) => {
+        icons.forEach((i) => i.classList.remove("selected"));
 
         const clickedIcon = event.target;
         clickedIcon.classList.add("selected");
-         selectedSkillId = icon.id;
-         console.log(selectedSkillId);
-       });
-     });
+        selectedSkillId = icon.id;
+        durationMinutes=icon.dataset.duration
+        console.log(icon);
+        
+console.log(durationMinutes);
 
+        console.log(selectedSkillId);
+      });
+    });
 
-    
     const skillContent = skills
       .map((skill) => {
         return `
@@ -88,15 +97,15 @@ function displaySkills(skillsGrouped) {
     card.shadowRoot.querySelector(".card-body-back").innerHTML = skillContent;
     skillsContainer.appendChild(card);
 
-  card.shadowRoot
-    .querySelector(".btn-primary")
-    .addEventListener("click", () => {
-      if (selectedSkillId) {
-        window.location.href = `../htmls/question.html?skillId=${selectedSkillId}`;
-      } else {
-        alert("Please select one of the difficulty levels");
-      }
-    });
+    card.shadowRoot
+      .querySelector(".btn-primary")
+      .addEventListener("click", () => {
+        if (selectedSkillId) {
+          window.location.href = `../htmls/question.html?skillId=${selectedSkillId}&duration=${durationMinutes}`;
+        } else {
+          alert("Please select one of the difficulty levels");
+        }
+      });
   }
 }
 
