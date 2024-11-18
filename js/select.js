@@ -55,8 +55,7 @@ function displaySkills(skillsGrouped) {
 
     skills.forEach((item) => {
       
-      // let durationMinutes = item.duration;
-      // console.log(durationMinutes);
+     
 
       const iconsContainer = card.shadowRoot.querySelector(".dynamic-icons");
       iconsContainer.insertAdjacentHTML(

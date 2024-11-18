@@ -61,6 +61,16 @@ body {
     width: 50vw;
 }
 
+.option:hover{
+    cursor: pointer;
+    background-color: rgb(221, 233, 250);
+}
+
+
+.selected{
+background-color: rgb(221, 233, 250);
+}
+
 .q-text {
     margin-bottom: 1.8rem;
 }
@@ -86,6 +96,17 @@ button:hover {
     background-color: #596eba !important;
 }
 
+.end{
+    background-color: rgb(228, 35, 35) !important;
+    border: rgb(130, 4, 4) !important;
+}
+
+.end:hover{
+    background-color: rgb(227, 68, 68) !important;
+        border: rgb(130, 4, 4) !important;
+}
+
+
 @media screen and (max-width: 768px) {
     .option {
         width: 80vw;
@@ -98,3 +119,90 @@ button:hover {
    
 }
 
+
+ /* Modal styles */
+ .modal {
+     display: none;
+     position: fixed;
+     z-index: 1000;
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.6);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     animation: fadeIn 0.5s;
+ }
+
+ .modal-content {
+     background: #fff;
+     padding: 30px;
+     border-radius: 15px;
+     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+     text-align: center;
+     position: relative;
+     width: 90%;
+     max-width: 400px;
+     animation: scaleUp 0.4s ease-in-out;
+ }
+
+ .modal-content h2 {
+     margin: 0 0 15px;
+     color: #6e8efb;
+ }
+
+ .modal-content p {
+     color: #555;
+     margin-bottom: 20px;
+ }
+
+ .modal-content a {
+     display: inline-block;
+     padding: 10px 20px;
+     background: var(--clr-mid);
+     color: #fff;
+     text-decoration: none;
+     border-radius: 50px;
+     font-weight: bold;
+     transition: background 0.3s ease-in-out;
+ }
+
+ .modal-content a:hover {
+     background:var(--clr-dark);
+ }
+
+ .modal-content .close {
+     position: absolute;
+     top: 15px;
+     right: 15px;
+     font-size: 20px;
+     color: #aaa;
+     cursor: pointer;
+     transition: color 0.3s ease-in-out;
+ }
+
+ .modal-content .close:hover {
+     color: #ff3b3b;
+ }
+
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+     }
+
+     to {
+         opacity: 1;
+     }
+ }
+
+ @keyframes scaleUp {
+     from {
+         transform: scale(0.8);
+     }
+
+     to {
+         transform: scale(1);
+     }
+ }
