@@ -172,7 +172,7 @@ function startCountdown() {
     timeLeft--;
   }, 1000);
 }
-
+ let score =null
 function submitAnswers() {
   const url = "http://127.0.0.1:8000/api/v1/quizzes/answer";
 
@@ -194,7 +194,8 @@ function submitAnswers() {
       return response.json();
     })
     .then((data) => {
-      console.log("Success:", data);
+    
+       score = data.data.score;
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -217,4 +218,13 @@ modal.style.display = "none";
     if (event.target === modal) {
       modal.style.display = "none";
     }
-  };
+};
+  
+let resultBtn = document.getElementById("result-btn");
+resultBtn.addEventListener("click", () => {
+  window.location.href = `../htmls/result.html?score=${score}`;
+})
+
+
+
+ 
