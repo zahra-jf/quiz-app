@@ -1,3 +1,6 @@
+import { navbar } from "../components/navbar/navbar.js";
+window.customElements.define("nav-bar", navbar);
+
 const params = new URLSearchParams(window.location.search);
 const score = params.get("score");
 

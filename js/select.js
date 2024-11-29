@@ -1,3 +1,7 @@
+
+import { navbar } from "../components/navbar/navbar.js";
+window.customElements.define("nav-bar", navbar);
+
 import { Card } from "../components/card.js";
 
 if (!customElements.get("skill-card")) {

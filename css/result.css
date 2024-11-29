@@ -16,7 +16,7 @@ body {
 }
 
 .container{
-    margin: 7rem;
+    
     text-align: center;
 }
 
@@ -28,6 +28,7 @@ h2{
 }
 
 .score-container{
+    margin-top: 7rem !important;
     display: flex;
     gap: 3rem;
     justify-content: center;
